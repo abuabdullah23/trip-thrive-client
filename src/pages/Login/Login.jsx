@@ -5,13 +5,14 @@ import Loader from '../../components/Loader/Loader';
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
 import useAuth from '../../hook/useAuth';
 import { toast } from 'react-toastify';
-import axios from 'axios';
+import useTitle from '../../hook/useTitle';
 
 
 const Login = () => {
     const [seePass, setSeePass] = useState(true);
     const { user, loading, setLoading, login } = useAuth();
-
+    
+    useTitle('Login');
 
     // handle login form value
     const handleSubmitForm = (event) => {
