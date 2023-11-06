@@ -5,10 +5,11 @@ import { useState } from 'react';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import useAuth from '../../hook/useAuth';
 import { toast } from 'react-toastify';
+import { updateCurrentUser } from 'firebase/auth';
 
 const Register = () => {
     const [seePass, setSeePass] = useState(true);
-    const { createUser, loading, setLoading } = useAuth();
+    const { createUser, loading, setLoading, handleUpdateProfile } = useAuth();
 
     // handle registration form value
     const handleSubmitForm = (event) => {
@@ -21,18 +22,21 @@ const Register = () => {
 
         // condition for strong password
         if (password.length < 6) {
-            alert.error('Password must be 6 characters.')
+            toast.error('Password must be 6 characters.')
             return;
         }
         else if (!/(?=.*[A-Z])/.test(password)) {
-            alert.error('Please include one capital letter.');
+            toast.error('Please include one capital letter.');
             return;
         }
 
         createUser(email, password)
             .then(res => {
-                toast.success('Registration Successful');
-                setLoading(false);
+                handleUpdateProfile(name, photo)
+                    .then(res => {
+                        toast.success('Registration Successful');
+                        setLoading(false)
+                    })
             })
             .catch(error => {
                 toast.error(error.message);

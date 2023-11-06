@@ -68,7 +68,7 @@ const Navbar = () => {
                                                     key={item.id}
                                                     to={item.path}
                                                     onClick={() => setShowDropdown(false)}
-                                                    className='py-1 px-3 rounded-md hover:bg-slate-600 hover:text-white'
+                                                    className='py-1 px-3 rounded-md hover:bg-rose-500 hover:text-white'
                                                 >
                                                     {item.title}
                                                 </Link>)
@@ -104,7 +104,7 @@ const Navbar = () => {
                                                     key={item.id}
                                                     to={item.path}
                                                     onClick={() => setShowDropdown(false)}
-                                                    className='py-1 px-3 rounded-md hover:bg-slate-600 hover:text-white'
+                                                    className='py-1 px-3 rounded-md hover:bg-rose-500 hover:text-white'
                                                 >
                                                     {item.title}
                                                 </Link>)
@@ -120,7 +120,7 @@ const Navbar = () => {
                         {
                             user ? <>
                                 <div className='flex items-center gap-3'>
-                                    <img className='h-8 w-8 rounded-full' src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="user image" />
+                                    <img title={user?.displayName} className='h-8 w-8 rounded-full' src={user?.photoURL} alt="user image" />
                                     <button onClick={handleLogOut} className='text-gray-600 hover:text-red-500 font-semibold'>Log Out</button>
                                 </div>
                             </> : <>
