@@ -3,7 +3,7 @@ import Container from '../../../components/Container/Container';
 import { allNav, loggedUserNav } from './NavItem';
 import { Link } from 'react-router-dom';
 import ActiveLink from '../../../components/ActiveLink/ActiveLink';
-import { VscListFlat } from 'react-icons/vsc';
+import { GrList } from 'react-icons/gr';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import logo from '../../../assets/images/TripThrive logo.png'
 import smallLogo from '../../../assets/images/favicon.png'
@@ -37,7 +37,7 @@ const Navbar = () => {
                     </Link>
 
                     <div onClick={() => setShow(!show)} className='lg:hidden p-1 rounded bg-gray-100'>
-                        <VscListFlat className='text-xl font-semibold text-rose-500' />
+                        <GrList className='text-xl text-rose-500' />
                     </div>
 
                     <Link to={'/'} className='lg:hidden'>

@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import useAuth from '../../hook/useAuth';
 import { toast } from 'react-toastify';
-import { updateCurrentUser } from 'firebase/auth';
 
 const Register = () => {
     const [seePass, setSeePass] = useState(true);
