@@ -3,7 +3,7 @@ import Container from '../../../components/Container/Container';
 import { allNav, loggedUserNav } from './NavItem';
 import { Link } from 'react-router-dom';
 import ActiveLink from '../../../components/ActiveLink/ActiveLink';
-import { FaList } from 'react-icons/fa';
+import { HiQueueList } from 'react-icons/hi2';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import logo from '../../../assets/images/TripThrive logo.png'
 import smallLogo from '../../../assets/images/favicon.png'
@@ -21,8 +21,8 @@ const Navbar = () => {
                         <img className='h-8' src={logo} alt="logo image" />
                     </Link>
 
-                    <div onClick={() => setShow(!show)} className='lg:hidden p-2 rounded bg-gray-500 text-white'>
-                        <FaList />
+                    <div onClick={() => setShow(!show)} className='lg:hidden p-1 rounded bg-gray-200 text-gray-700'>
+                        <HiQueueList className='text-xl' />
                     </div>
 
                     <Link to={'/'} className='lg:hidden'>
@@ -109,7 +109,7 @@ const Navbar = () => {
                                     <button className='text-gray-600 hover:text-red-500 font-semibold'>Log Out</button>
                                 </div>
                             </> : <>
-                                <Link className='text-gray-600 hover:text-cyan-500 font-semibold' to={'/login'}>Log In</Link>
+                                <Link className='text-gray-600 hover:text-rose-500 font-semibold' to={'/login'}>Log In</Link>
                             </>
                         }
                     </div>
