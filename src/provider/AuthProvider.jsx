@@ -57,6 +57,13 @@ const AuthProvider = ({ children }) => {
                     .then(res => {
                         console.log(res.data);
                     })
+            } else {
+                axios.post(`${import.meta.env.VITE_BASE_API_URL}/logout`, loggedUser, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log(res.data);
+                    })
             }
         })
         return () => {
