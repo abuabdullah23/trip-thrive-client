@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
 import { useState } from 'react';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import useAuth from '../../hook/useAuth';
+import { toast } from 'react-toastify';
 
 const Register = () => {
     const [seePass, setSeePass] = useState(true);
-    const loading = true;
+    const { createUser, loading, setLoading } = useAuth();
 
     // handle registration form value
     const handleSubmitForm = (event) => {
@@ -21,10 +23,22 @@ const Register = () => {
         if (password.length < 6) {
             alert.error('Password must be 6 characters.')
             return;
-        } else if (!/(?=.*[A-Z])/.test(password)) {
-            alert.error('Please include one capital letter.');
-            return;
         }
+        // else if (!/(?=.*[A-Z])/.test(password)) {
+        //     alert.error('Please include one capital letter.');
+        //     return;
+        // }
+
+        createUser(email, password)
+            .then(res => {
+                toast.success('Registration Successful');
+                setLoading(false);
+            })
+            .catch(error => {
+                toast.error(error.message);
+                setLoading(false);
+            })
+
     }
 
     return (

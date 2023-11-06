@@ -3,7 +3,7 @@ import Container from '../../../components/Container/Container';
 import { allNav, loggedUserNav } from './NavItem';
 import { Link } from 'react-router-dom';
 import ActiveLink from '../../../components/ActiveLink/ActiveLink';
-import { HiQueueList } from 'react-icons/hi2';
+import { VscListFlat } from 'react-icons/vsc';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import logo from '../../../assets/images/TripThrive logo.png'
 import smallLogo from '../../../assets/images/favicon.png'
@@ -18,11 +18,11 @@ const Navbar = () => {
             <Container>
                 <div className='flex items-center justify-between relative'>
                     <Link to={'/'} className='hidden lg:block'>
-                        <img className='h-8' src={logo} alt="logo image" />
+                        <img className='h-7' src={logo} alt="logo image" />
                     </Link>
 
-                    <div onClick={() => setShow(!show)} className='lg:hidden p-1 rounded bg-gray-200 text-gray-700'>
-                        <HiQueueList className='text-xl' />
+                    <div onClick={() => setShow(!show)} className='lg:hidden p-1 rounded bg-gray-100'>
+                        <VscListFlat className='text-xl font-semibold text-rose-500' />
                     </div>
 
                     <Link to={'/'} className='lg:hidden'>
