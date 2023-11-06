@@ -7,11 +7,26 @@ import { VscListFlat } from 'react-icons/vsc';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import logo from '../../../assets/images/TripThrive logo.png'
 import smallLogo from '../../../assets/images/favicon.png'
+import useAuth from '../../../hook/useAuth';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
-    const user = null;
+    const { user, logOut, setLoading } = useAuth();
     const [show, setShow] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
+
+    // handleLogOut
+    const handleLogOut = () => {
+        logOut()
+            .then(res => {
+                toast.success('Log Out Successful!');
+                setLoading(false);
+            })
+            .catch(error => {
+                toast.error(error.message);
+                setLoading(false);
+            })
+    }
 
     return (
         <div className='sticky top-0 z-10 shadow py-3 bg-white'>
@@ -106,7 +121,7 @@ const Navbar = () => {
                             user ? <>
                                 <div className='flex items-center gap-3'>
                                     <img className='h-8 w-8 rounded-full' src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="user image" />
-                                    <button className='text-gray-600 hover:text-red-500 font-semibold'>Log Out</button>
+                                    <button onClick={handleLogOut} className='text-gray-600 hover:text-red-500 font-semibold'>Log Out</button>
                                 </div>
                             </> : <>
                                 <Link className='text-gray-600 hover:text-rose-500 font-semibold' to={'/login'}>Log In</Link>

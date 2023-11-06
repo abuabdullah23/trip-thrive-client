@@ -24,10 +24,10 @@ const Register = () => {
             alert.error('Password must be 6 characters.')
             return;
         }
-        // else if (!/(?=.*[A-Z])/.test(password)) {
-        //     alert.error('Please include one capital letter.');
-        //     return;
-        // }
+        else if (!/(?=.*[A-Z])/.test(password)) {
+            alert.error('Please include one capital letter.');
+            return;
+        }
 
         createUser(email, password)
             .then(res => {
