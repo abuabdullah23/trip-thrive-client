@@ -24,6 +24,7 @@ const AddService = () => {
         const location = form.location.value;
         const price = form.price.value;
         const description = form.description.value;
+        const providerInfo = form.providerInfo.value;
         const serviceInfo = {
             service,
             image,
@@ -32,7 +33,8 @@ const AddService = () => {
             providerPhoto: user?.photoURL,
             price: parseInt(price),
             location,
-            description
+            description,
+            providerInfo
         }
 
         axiosSecure.post('/add-service', serviceInfo)
@@ -93,17 +95,20 @@ const AddService = () => {
                             <label className='font-semibold' htmlFor="">Description</label>
                             <textarea required type="text" name='description' placeholder='Write your service description' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
                         </div>
-                        <div className='flex items-end justify-center w-full md:w-1/2'>
-                            <button
-                                disabled={loader ? true : false}
-                                type="submit"
-                                className={`py-2 px-4 w-fit bg-rose-500 hover:shadow-rose-500/20 hover:shadow-lg font-semibold text-white rounded-md mb-3 ${loader && 'bg-rose-400'} `}>
-                                {
-                                    loader ? <Loader loadingText={'Adding Service...'} /> : 'Add Service'
-                                }
-                            </button>
-
+                        <div className='flex flex-col items-start gap-1 w-full  md:w-1/2'>
+                            <label className='font-semibold' htmlFor="">About you</label>
+                            <textarea required type="text" name='providerInfo' placeholder='Write about you...' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
                         </div>
+                    </div>
+                    <div className='flex justify-center w-full mt-5'>
+                        <button
+                            disabled={loader ? true : false}
+                            type="submit"
+                            className={`py-2 px-4 w-fit bg-rose-500 hover:shadow-rose-500/20 hover:shadow-lg font-semibold text-white rounded-md mb-3 ${loader && 'bg-rose-400'} `}>
+                            {
+                                loader ? <Loader loadingText={'Adding Service...'} /> : 'Add Service'
+                            }
+                        </button>
                     </div>
                 </div>
             </form>

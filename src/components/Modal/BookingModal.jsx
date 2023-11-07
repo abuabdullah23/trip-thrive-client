@@ -1,9 +1,49 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
+import useAuth from '../../hook/useAuth';
+import useAxiosSecure from '../../hook/useAxiosSecure';
+import { toast } from 'react-toastify';
 
-const BookingModal = ({ isOpen, closeModal }) => {
+const BookingModal = ({ isOpen, closeModal, singleService }) => {
+    const axiosSecure = useAxiosSecure();
 
+    const { _id, service, image, price, providerName, providerInfo, providerEmail, providerPhoto, location, description } = singleService;
+    const { user } = useAuth();
 
+    const handleBooking = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const takingDate = form.takingDate.value;
+        const instruction = form.instruction.value;
+
+        const bookingInfo = {
+            name: service,
+            serviceId: _id,
+            takingDate,
+            price,
+            providerName,
+            providerEmail,
+            providerInfo,
+            providerPhoto,
+            location,
+            status: 'pending',
+            userEmail: user?.email || 'Unknown',
+            instruction,
+            description
+        }
+
+        axiosSecure.post('/service-booking', bookingInfo)
+            .then(res => {
+                if (res.status === 200) {
+                    toast.success('Service booking successful');
+                    closeModal();
+                }
+            })
+            .catch(error => {
+                toast.error(error.message);
+                closeModal();
+            })
+    }
 
     return (
         <div>
@@ -40,56 +80,56 @@ const BookingModal = ({ isOpen, closeModal }) => {
                                         Review Info Before Book
                                     </Dialog.Title>
 
-                                    <form>
+                                    <form onSubmit={handleBooking}>
                                         <div className="flex flex-col gap-3 mt-2 text-base">
                                             <div className='w-full h-[180px] md:h-[240px] lg:h-[360px] transition-all duration-300 p-3 border border-rose-400 rounded-md'>
-                                                <img className='h-full w-full object-cover rounded-md' src="https://i.ibb.co/k2mfbrY/slider1.jpg" alt="service image" />
+                                                <img className='h-full w-full object-cover rounded-md' src={image} alt="service image" />
                                             </div>
                                             <div className='bg-rose-100 p-2 rounded-md'>
                                                 <div className='flex flex-col gap-2'>
                                                     <div className='flex items-center gap-2'>
                                                         <label className='font-semibold' htmlFor="">Service Name:</label>
-                                                        <p>Service Name will be here</p>
+                                                        <p>{service}</p>
                                                     </div>
                                                 </div>
                                                 <div className='flex flex-col gap-2'>
                                                     <div className='flex items-center gap-2'>
                                                         <label className='font-semibold' htmlFor=""> Provider Email:</label>
-                                                        <p>Provider will be here</p>
+                                                        <p>{providerEmail}</p>
                                                     </div>
                                                 </div>
                                                 <div className='flex flex-col gap-2'>
                                                     <div className='flex items-center gap-2'>
                                                         <label className='font-semibold' htmlFor=""> Price:</label>
-                                                        <p>$654</p>
+                                                        <p>${price}</p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className='flex flex-col gap-2'>
                                                 <div className='flex items-center gap-2'>
                                                     <label className='font-semibold' htmlFor="">User Email:</label>
-                                                    <p>User email will be here</p>
+                                                    <p>{user?.email}</p>
                                                 </div>
                                             </div>
                                             <div className='flex flex-col gap-2'>
                                                 <div className='flex items-center gap-2'>
                                                     <label className='font-semibold' htmlFor="">Service Taking Date:</label>
-                                                    <input type="date" name='takingDate' className='py-1 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
+                                                    <input required type="date" name='takingDate' className='py-1 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
                                                 </div>
                                             </div>
                                             <div className='flex flex-col gap-2'>
                                                 <div className='flex flex-col items-start gap-2'>
                                                     <label className='font-semibold' htmlFor="">Special Instruction:</label>
-                                                    <textarea type="text" name='instruction' placeholder='Write Instruction, anything like address , area, customized service plan' className='w-full py-1 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
+                                                    <textarea required type="text" name='instruction' placeholder='Write Instruction, anything like address , area, customized service plan' className='w-full py-1 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div className="mt-4 flex justify-center">
                                             <button
-                                                type="button"
+                                                disabled={providerEmail === user?.email ? true : false}
+                                                type="submit"
                                                 className="rounded-md border-2 hover:border-rose-500 py-2 px-3 bg-rose-500 font-semibold hover:bg-transparent text-white hover:text-rose-500 transition-all duration-300"
-                                                onClick={closeModal}
                                             >
                                                 Purchase this Service
                                             </button>
