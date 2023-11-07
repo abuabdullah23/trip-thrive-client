@@ -7,6 +7,9 @@ import Error from "../Error";
 import AllServices from "../pages/AllServices/AllServices";
 import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
 import PrivateRoute from "./PrivateRoute";
+import AddService from "../pages/AddService/AddService";
+import MyServices from "../pages/MyServices/MyServices";
+import MySchedules from "../pages/MySchedules/MySchedules";
 
 
 const router = createBrowserRouter([
@@ -38,6 +41,18 @@ const router = createBrowserRouter([
             {
                 path: '/service-details/:id',
                 element: <PrivateRoute><ServiceDetails /></PrivateRoute>
+            },
+            {
+                path: '/dashboard/add-service',
+                element: <PrivateRoute><AddService /></PrivateRoute>
+            },
+            {
+                path: '/dashboard/my-services',
+                element: <PrivateRoute><MyServices /></PrivateRoute>
+            },
+            {
+                path: '/dashboard/my-schedules',
+                element: <PrivateRoute><MySchedules /></PrivateRoute>
             },
 
         ]

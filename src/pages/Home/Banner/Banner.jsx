@@ -32,7 +32,7 @@ const Banner = () => {
     }
 
     return (
-        <div className='w-full mt-4 md:mt-6'>
+        <div className='w-full'>
             <div className='w-full flex flex-wrap md:gap-8'>
                 <div className='w-full'>
                     <Carousel

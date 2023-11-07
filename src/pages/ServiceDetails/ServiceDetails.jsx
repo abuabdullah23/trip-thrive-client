@@ -12,7 +12,7 @@ const ServiceDetails = () => {
     }
 
     return (
-        <div className='w-full py-12 flex flex-col md:flex-row gap-6'>
+        <div className='w-full flex flex-col md:flex-row gap-6'>
             <div className='w-full md:w-2/5 h-[180px] md:h-[360px] lg:h-[512px] transition-all duration-300 p-3 border border-rose-400 rounded-md'>
                 <img className='h-full w-full object-cover rounded-md' src="https://i.ibb.co/k2mfbrY/slider1.jpg" alt="service image" />
             </div>

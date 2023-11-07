@@ -8,7 +8,9 @@ const MainLayout = () => {
         <div>
             <Navbar />
             <Container>
-                <Outlet />
+                <div className="py-12">
+                    <Outlet />
+                </div>
             </Container>
             <Footer />
         </div>

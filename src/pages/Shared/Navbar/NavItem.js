@@ -20,8 +20,8 @@ export const loggedUserNav = [
     },
     {
         id: 2,
-        path: '/dashboard/add-services',
-        title: 'Add Services'
+        path: '/dashboard/add-service',
+        title: 'Add Service'
     },
     {
         id: 3,
