@@ -1,11 +1,17 @@
 import { BiSearch } from "react-icons/bi";
 import AllServicesCard from "./AllServicesCard";
 import useTitle from "../../hook/useTitle";
+import useAllServices from "../../hook/useAllServices";
+import { useState } from "react";
 
 const AllServices = () => {
-    useTitle('All Services')
-    const services = [1, 2, 3, 4, 5, 6, 7, 8]
+    useTitle('All Services');
+    const allServices = useAllServices();
+    const [servicesLength, setServicesLength] = useState(6);
 
+    const handleShowAllData = () => {
+        setServicesLength(allServices.length);
+    }
     return (
         <div className="w-full flex flex-col gap-12">
             <div className="flex items-center justify-center">
@@ -17,11 +23,14 @@ const AllServices = () => {
 
             <div className='w-full grid gap-6'>
                 {
-                    services.map((services, i) => <AllServicesCard
+                    allServices.slice(0, servicesLength).map((services, i) => <AllServicesCard
                         key={i}
                         services={services}
                     />)
                 }
+            </div>
+            <div className={`mt-6 flex items-center justify-center ${servicesLength === allServices.length || allServices.length < 7 ? 'hidden' : ''}`} >
+                <button onClick={handleShowAllData} className='py-2 px-8 border border-rose-500 hover:bg-rose-500 hover:text-white rounded font-semibold transition-all duration-300'>Show All Services</button>
             </div>
         </div>
     );

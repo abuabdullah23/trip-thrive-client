@@ -1,18 +1,20 @@
-import React from 'react';
 import SectionTitle from '../../../components/SectionTitle/SectionTitle';
 import ServicesCard from '../../../components/ServicesCard/ServicesCard';
 import { Link } from 'react-router-dom';
+import useAllServices from '../../../hook/useAllServices';
 
 const PopularServices = () => {
+    const allServices = useAllServices();
+
     return (
         <div className='py-12'>
             <SectionTitle sectionTitle={'Popular Services'} />
 
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                 {
-                    [1, 2, 3, 4].map((service, i) => <ServicesCard
+                    allServices.slice(0, 4).map((services, i) => <ServicesCard
                         key={i}
-                        service={service}
+                        singleService={services}
                     />)
                 }
             </div>

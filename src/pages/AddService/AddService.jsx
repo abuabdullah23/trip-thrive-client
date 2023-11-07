@@ -29,6 +29,7 @@ const AddService = () => {
             image,
             providerName,
             providerEmail,
+            providerPhoto: user?.photoURL,
             price: parseInt(price),
             location,
             description
@@ -38,8 +39,9 @@ const AddService = () => {
             .then(res => {
                 if (res.status === 200) {
                     toast.success('Added service successful');
+                    setLoader(false);
+                    form.reset('');
                 }
-                setLoader(false)
             })
             .catch(error => {
                 toast.error(error.message);
@@ -56,11 +58,11 @@ const AddService = () => {
                     <div className='flex flex-col md:flex-row gap-4'>
                         <div className='flex flex-col items-start gap-1 w-full md:w-1/2'>
                             <label className='font-semibold' htmlFor="">Photo Url</label>
-                            <input type="text" name='image' placeholder='Photo Url is here' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
+                            <input required type="text" name='image' placeholder='Photo Url is here' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
                         </div>
                         <div className='flex flex-col items-start gap-1 w-full md:w-1/2'>
                             <label className='font-semibold' htmlFor="">Service Name</label>
-                            <input type="text" name='service' placeholder='Service name is here' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
+                            <input required type="text" name='service' placeholder='Service name is here' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
                         </div>
                     </div>
 
@@ -78,18 +80,18 @@ const AddService = () => {
                     <div className='flex flex-col md:flex-row gap-4'>
                         <div className='flex flex-col items-start gap-1 w-full md:w-1/2'>
                             <label className='font-semibold' htmlFor="">Price</label>
-                            <input type="number" min={0} name='price' placeholder='$ Price' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
+                            <input required type="number" min={0} name='price' placeholder='$ Price' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
                         </div>
                         <div className='flex flex-col items-start gap-1 w-full md:w-1/2'>
                             <label className='font-semibold' htmlFor="">Location</label>
-                            <input type="text" name='location' placeholder='Location/Area' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
+                            <input required type="text" name='location' placeholder='Location/Area' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
                         </div>
                     </div>
 
                     <div className='flex flex-col md:flex-row gap-4'>
                         <div className='flex flex-col items-start gap-1 w-full  md:w-1/2'>
                             <label className='font-semibold' htmlFor="">Description</label>
-                            <textarea type="text" name='description' placeholder='Write your service description' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
+                            <textarea required type="text" name='description' placeholder='Write your service description' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
                         </div>
                         <div className='flex items-end justify-center w-full md:w-1/2'>
                             <button
