@@ -12,7 +12,7 @@ const AddService = () => {
     const [loader, setLoader] = useState(false);
     const axiosSecure = useAxiosSecure();
 
-    // Add product method
+    // Add service method
     const handleAddService = (event) => {
         event.preventDefault();
         setLoader(true);
