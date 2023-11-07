@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const AllServicesCard = ({ services }) => {
     return (
         <div className='flex flex-col gap-2 md:flex-row border border-rose-200 rounded-lg overflow-hidden text-slate-700'>
-            <div className='h-full w-full md:w-1/3'>
+            <div className='h-[164px] md:h-[240px] transition-all duration-300 w-full md:w-1/3'>
                 <img className='h-full w-full object-cover relative' src="https://i.ibb.co/k2mfbrY/slider1.jpg" alt="service image" />
             </div>
 
