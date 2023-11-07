@@ -6,7 +6,7 @@ export const allNav = [
     },
     {
         id: 2,
-        path: '/service',
+        path: '/services',
         title: 'Services'
     }
 ]
