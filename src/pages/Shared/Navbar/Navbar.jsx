@@ -36,8 +36,8 @@ const Navbar = () => {
                         <img className='h-7' src={logo} alt="logo image" />
                     </Link>
 
-                    <div onClick={() => setShow(!show)} className='lg:hidden p-1 rounded bg-gray-100'>
-                        <GrList className='text-xl text-rose-500' />
+                    <div onClick={() => setShow(!show)} className='lg:hidden p-1 rounded bg-gray-100 hover:bg-slate-200 cursor-pointer'>
+                        <GrList className='text-xl' />
                     </div>
 
                     <Link to={'/'} className='lg:hidden'>
@@ -54,7 +54,7 @@ const Navbar = () => {
                                     </ActiveLink>
                                 </li>)
                             }
-                            {/* dropdown menu */}
+                            {/* dropdown menu in medium device */}
                             {
                                 user && <>
                                     <div className=' relative'>
@@ -67,7 +67,10 @@ const Navbar = () => {
                                                 loggedUserNav.map((item) => <Link
                                                     key={item.id}
                                                     to={item.path}
-                                                    onClick={() => setShowDropdown(false)}
+                                                    onClick={() => {
+                                                        setShow(false)
+                                                        setShowDropdown(false)
+                                                    }}
                                                     className='py-1 px-3 rounded-md hover:bg-rose-500 hover:text-white'
                                                 >
                                                     {item.title}

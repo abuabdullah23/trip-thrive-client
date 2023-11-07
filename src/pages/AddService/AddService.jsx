@@ -1,17 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import Loader from '../../components/Loader/Loader';
 import useTitle from '../../hook/useTitle';
+import useAuth from '../../hook/useAuth';
+import useAxiosSecure from '../../hook/useAxiosSecure';
+import { toast } from 'react-toastify';
 
 const AddService = () => {
-    const loader = false;
     useTitle('Add new Service');
+    const { user } = useAuth();
+    const [loader, setLoader] = useState(false);
+    const axiosSecure = useAxiosSecure();
+
+    // Add product method
+    const handleAddService = (event) => {
+        event.preventDefault();
+        setLoader(true);
+        const form = event.target;
+        const service = form.service.value;
+        const image = form.image.value;
+        const providerName = form.providerName.value;
+        const providerEmail = form.providerEmail.value;
+        const location = form.location.value;
+        const price = form.price.value;
+        const description = form.description.value;
+        const serviceInfo = {
+            service,
+            image,
+            providerName,
+            providerEmail,
+            price: parseInt(price),
+            location,
+            description
+        }
+
+        axiosSecure.post('/add-service', serviceInfo)
+            .then(res => {
+                if (res.status === 200) {
+                    toast.success('Added service successful');
+                }
+                setLoader(false)
+            })
+            .catch(error => {
+                toast.error(error.message);
+                setLoader(false)
+            })
+    }
 
     return (
         <div>
             <SectionTitle sectionTitle={'Add a new service'} />
 
-            <form>
+            <form onSubmit={handleAddService}>
                 <div className='flex flex-col gap-5'>
                     <div className='flex flex-col md:flex-row gap-4'>
                         <div className='flex flex-col items-start gap-1 w-full md:w-1/2'>
@@ -27,18 +67,18 @@ const AddService = () => {
                     <div className='flex flex-col md:flex-row gap-4'>
                         <div className='flex flex-col items-start gap-1 w-full md:w-1/2'>
                             <label className='font-semibold' htmlFor="">Provider Name</label>
-                            <input readOnly type="text" name='providerName' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
+                            <input readOnly value={user?.displayName} type="text" name='providerName' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
                         </div>
                         <div className='flex flex-col items-start gap-1 w-full md:w-1/2'>
                             <label className='font-semibold' htmlFor="">Provider Email</label>
-                            <input readOnly type="text" name='service' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
+                            <input readOnly value={user?.email} type="text" name='providerEmail' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
                         </div>
                     </div>
 
                     <div className='flex flex-col md:flex-row gap-4'>
                         <div className='flex flex-col items-start gap-1 w-full md:w-1/2'>
                             <label className='font-semibold' htmlFor="">Price</label>
-                            <input type="text" name='price' placeholder='$ Price' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
+                            <input type="number" min={0} name='price' placeholder='$ Price' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
                         </div>
                         <div className='flex flex-col items-start gap-1 w-full md:w-1/2'>
                             <label className='font-semibold' htmlFor="">Location</label>
@@ -49,7 +89,7 @@ const AddService = () => {
                     <div className='flex flex-col md:flex-row gap-4'>
                         <div className='flex flex-col items-start gap-1 w-full  md:w-1/2'>
                             <label className='font-semibold' htmlFor="">Description</label>
-                            <textarea type="text" name='instruction' placeholder='Write your service description' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
+                            <textarea type="text" name='description' placeholder='Write your service description' className='w-full py-2 px-2 border border-rose-200 focus:border-rose-500 rounded outline-none' />
                         </div>
                         <div className='flex items-end justify-center w-full md:w-1/2'>
                             <button

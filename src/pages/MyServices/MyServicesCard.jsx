@@ -20,9 +20,9 @@ const MyServicesCard = () => {
                         <Link title='View Details' to={`/service-details/${'213'}`} className='w-fit h-full py-2 px-3 rounded text-white text-center font-normal bg-green-500 hover:bg-green-600 flex items-center gap-1 hover:scale-[103%] transition-all duration-300 justify-center'>
                             <FaEye />
                         </Link>
-                        <button title='Edit Service' className='w-fit h-full py-2 px-3 rounded text-white text-center font-normal bg-yellow-400 hover:bg-yellow-500 flex items-center gap-1 hover:scale-[103%] transition-all duration-300 justify-center'>
+                        <Link to={`/dashboard/my-service/update/45454`} title='Edit Service' className='w-fit h-full py-2 px-3 rounded text-white text-center font-normal bg-yellow-400 hover:bg-yellow-500 flex items-center gap-1 hover:scale-[103%] transition-all duration-300 justify-center'>
                             <FaRegEdit />
-                        </button>
+                        </Link>
                         <button title='Delete Service' className='w-fit h-full py-2 px-3 rounded text-white text-center font-normal bg-rose-500 hover:bg-rose-600 flex items-center gap-1 hover:scale-[103%] transition-all duration-300 justify-center'>
                             <FaTrashAlt />
                         </button>

@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import AddService from "../pages/AddService/AddService";
 import MyServices from "../pages/MyServices/MyServices";
 import MySchedules from "../pages/MySchedules/MySchedules";
+import UpdateService from "../pages/UpdateService/UpdateService";
 
 
 const router = createBrowserRouter([
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/my-services',
                 element: <PrivateRoute><MyServices /></PrivateRoute>
+            },
+            {
+                path: '/dashboard/my-service/update/:id',
+                element: <PrivateRoute><UpdateService /></PrivateRoute>
             },
             {
                 path: '/dashboard/my-schedules',

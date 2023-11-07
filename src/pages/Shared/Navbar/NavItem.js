@@ -15,13 +15,13 @@ export const allNav = [
 export const loggedUserNav = [
     {
         id: 1,
-        path: '/dashboard/my-services',
-        title: 'My Services'
+        path: '/dashboard/add-service',
+        title: 'Add Service'
     },
     {
         id: 2,
-        path: '/dashboard/add-service',
-        title: 'Add Service'
+        path: '/dashboard/my-services',
+        title: 'My Services'
     },
     {
         id: 3,
