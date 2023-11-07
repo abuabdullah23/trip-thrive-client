@@ -8,7 +8,7 @@ const PopularServices = () => {
         <div className='py-12'>
             <SectionTitle sectionTitle={'Popular Services'} />
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                 {
                     [1, 2, 3, 4].map((service, i) => <ServicesCard
                         key={i}
