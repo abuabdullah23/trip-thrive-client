@@ -1,8 +1,9 @@
 import { BiSearch } from "react-icons/bi";
 import AllServicesCard from "./AllServicesCard";
+import useTitle from "../../hook/useTitle";
 
 const AllServices = () => {
-
+    useTitle('All Services')
     const services = [1, 2, 3, 4, 5, 6, 7, 8]
 
     return (

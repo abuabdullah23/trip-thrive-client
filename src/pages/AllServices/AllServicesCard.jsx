@@ -24,7 +24,7 @@ const AllServicesCard = ({ services }) => {
                 </div>
 
                 <div className='flex justify-start mt-2'>
-                    <Link to='/' className='w-fit px-5 py-1 rounded text-white text-center font-normal bg-rose-500 hover:bg-rose-600 flex items-center gap-1 hover:gap-2 transition-all duration-300 justify-center'>
+                    <Link to={`/service-details/${'213'}`} className='w-fit px-5 py-1 rounded text-white text-center font-normal bg-rose-500 hover:bg-rose-600 flex items-center gap-1 hover:gap-2 transition-all duration-300 justify-center'>
                         <span>View Details</span>
                         <BsArrowRightShort className='text-2xl mt-[2px]' />
                     </Link>

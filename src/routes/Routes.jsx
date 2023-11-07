@@ -5,6 +5,8 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Login/Register";
 import Error from "../Error";
 import AllServices from "../pages/AllServices/AllServices";
+import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -28,10 +30,14 @@ const router = createBrowserRouter([
                 path: '*',
                 element: <Error />
             },
-            
+
             {
                 path: '/services',
                 element: <AllServices />
+            },
+            {
+                path: '/service-details/:id',
+                element: <PrivateRoute><ServiceDetails /></PrivateRoute>
             },
 
         ]

@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     // for loading state
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     // create user with email and password
     const createUser = (email, password) => {
@@ -52,13 +52,14 @@ const AuthProvider = ({ children }) => {
             setLoading(false)
 
             // create jwt
+            const userEmail = loggedUser?.email || user?.email;
             if (loggedUser?.email) {
-                axios.post(`${import.meta.env.VITE_BASE_API_URL}/jwt`, { email: loggedUser?.email }, { withCredentials: true })
+                axios.post(`${import.meta.env.VITE_BASE_API_URL}/jwt`, { email: userEmail }, { withCredentials: true })
                     .then(res => {
                         console.log(res.data);
                     })
             } else {
-                axios.post(`${import.meta.env.VITE_BASE_API_URL}/logout`, loggedUser, {
+                axios.post(`${import.meta.env.VITE_BASE_API_URL}/logout`, userEmail, {
                     withCredentials: true
                 })
                     .then(res => {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import Loader from '../../components/Loader/Loader';
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
@@ -11,8 +11,13 @@ import useTitle from '../../hook/useTitle';
 const Login = () => {
     const [seePass, setSeePass] = useState(true);
     const { user, loading, setLoading, login } = useAuth();
-    
+
     useTitle('Login');
+
+    // redirect after login to target page
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     // handle login form value
     const handleSubmitForm = (event) => {
@@ -25,6 +30,7 @@ const Login = () => {
             .then(res => {
                 toast.success('Login Successful!');
                 setLoading(false);
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 toast.error(error.message);

@@ -1,5 +1,5 @@
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
 import { useState } from 'react';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
@@ -12,6 +12,11 @@ const Register = () => {
     const { createUser, loading, setLoading, handleUpdateProfile } = useAuth();
 
     useTitle('Register');
+
+    // redirect after login to target page
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     // handle registration form value
     const handleSubmitForm = (event) => {
@@ -37,14 +42,14 @@ const Register = () => {
                 handleUpdateProfile(name, photo)
                     .then(res => {
                         toast.success('Registration Successful');
-                        setLoading(false)
+                        setLoading(false);
+                        navigate(from, { replace: true });
                     })
             })
             .catch(error => {
                 toast.error(error.message);
                 setLoading(false);
             })
-
     }
 
     return (
