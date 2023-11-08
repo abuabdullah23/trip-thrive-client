@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import MyBookingRow from './MyBookingRow';
 import useMyBookings from '../../hook/useMyBookings';
 import MyPendingBookingsRow from './MyPendingBookingsRow';
+import EmptyContent from '../../components/EmptyContent/EmptyContent';
 
 const MySchedules = () => {
     useTitle('My Schedules');
@@ -44,6 +45,7 @@ const MySchedules = () => {
                 </div></> :
                 <div className='flex items-center justify-center py-12'>
                     <div className='flex flex-col items-center gap-2'>
+                        <EmptyContent />
                         <h2 className='text-center text-2xl text-red-500 font-normal'>You can not Purchase any service.</h2>
                         <Link to='/services' className='w-fit py-2 px-4 border border-rose-500 hover:bg-rose-500 hover:text-white rounded font-semibold transition-all duration-300'>Explore our services</Link>
                     </div>
@@ -89,6 +91,7 @@ const MySchedules = () => {
 
                 <div className='flex items-center justify-center py-12'>
                     <div className='flex flex-col items-center gap-2'>
+                        <EmptyContent />
                         <h2 className='text-center text-2xl text-red-500 font-normal'>Nobody can not Purchase your service.</h2>
                     </div>
                 </div>

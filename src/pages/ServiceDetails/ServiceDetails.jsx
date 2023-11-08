@@ -8,6 +8,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination } from 'swiper/modules'
 import { motion, useScroll, useSpring } from "framer-motion";
+import EmptyContent from '../../components/EmptyContent/EmptyContent';
 
 const ServiceDetails = () => {
     useTitle('Service Details');
@@ -140,7 +141,8 @@ const ServiceDetails = () => {
                         <div className='custom_bullet justify-center gap-3 !w-auto'></div>
                     </div>
                 </section > :
-                    <div className='flex items-center justify-center py-24 text-center'>
+                    <div className='flex items-center flex-col justify-center py-24 text-center'>
+                        <EmptyContent />
                         <p className='text-4xl font-thin text-rose-500'>No related services available</p>
                     </div>
             }

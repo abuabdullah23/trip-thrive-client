@@ -35,7 +35,7 @@ const MyBookingRow = ({ myBooking, reload, index }) => {
     }
 
     return (
-        <tr className='bg-green-50 rounded-md border-b border-gray-300 hover:bg-green-200'>
+        <tr className='bg-green-50 rounded-md border-b border-gray-300 hover:bg-green-100'>
             <td className="pl-5 text-xl font-medium">{index + 1}</td>
             <td className="px-3 py-2 w-32 h-20">
                 <img className='w-full h-full object-cover rounded' src={image} alt="service image" />
