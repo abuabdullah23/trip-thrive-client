@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination } from 'swiper/modules'
+import { motion, useScroll, useSpring } from "framer-motion";
 
 const ServiceDetails = () => {
     useTitle('Service Details');
@@ -38,8 +39,18 @@ const ServiceDetails = () => {
             .catch(error => console.log(error))
     }, [providerEmail])
 
+    // scroll motion
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
+
     return (
         <>
+            <motion.div className="fixed top-[49px] left-0 right-0 h-3 bg-gradient-to-r from-indigo-600 via-purple-500 to-rose-500 z-10 transform origin-top-left" style={{ scaleX }} />
+
             <div className='w-full flex flex-col md:flex-row gap-6'>
                 <div className='w-full md:w-2/5 h-[300px] md:h-[360px] lg:h-[512px] transition-all duration-300 p-3 border border-rose-400 rounded-md'>
                     <img className='h-full w-full object-cover rounded-md' src={image} alt="service image" />
@@ -128,12 +139,14 @@ const ServiceDetails = () => {
                     <div className='w-full flex justify-center items-center py-10'>
                         <div className='custom_bullet justify-center gap-3 !w-auto'></div>
                     </div>
-                </section > : 
-                <div className='flex items-center justify-center py-24 text-center'>
-                    <p className='text-4xl font-thin text-rose-500'>No related services available</p>
-                </div>
+                </section > :
+                    <div className='flex items-center justify-center py-24 text-center'>
+                        <p className='text-4xl font-thin text-rose-500'>No related services available</p>
+                    </div>
             }
+
         </>
+
     );
 };
 
