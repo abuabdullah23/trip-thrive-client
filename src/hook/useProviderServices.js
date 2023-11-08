@@ -1,4 +1,3 @@
-import React from 'react';
 import useAuth from './useAuth';
 import useAxiosSecure from './useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
@@ -6,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 const useProviderServices = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
-    
+
     const { data: providerServices = [], refetch } = useQuery({
         queryKey: ['services', user?.email],
         queryFn: async () => {

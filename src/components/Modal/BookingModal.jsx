@@ -18,6 +18,7 @@ const BookingModal = ({ isOpen, closeModal, singleService }) => {
 
         const bookingInfo = {
             name: service,
+            image,
             serviceId: _id,
             takingDate,
             price,
@@ -28,6 +29,7 @@ const BookingModal = ({ isOpen, closeModal, singleService }) => {
             location,
             status: 'pending',
             userEmail: user?.email || 'Unknown',
+            userName: user?.displayName,
             instruction,
             description
         }
