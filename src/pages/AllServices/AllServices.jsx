@@ -11,7 +11,7 @@ const AllServices = () => {
     const [servicesLength, setServicesLength] = useState(6);
 
     const handleShowAllData = () => {
-        setServicesLength(allServices.length);
+        setServicesLength(allServices?.length);
     }
 
     // search method
@@ -21,7 +21,7 @@ const AllServices = () => {
     // Filter the services data by search value
     useEffect(() => {
         if (searchValue) {
-            const filteredData = allServices.filter((name) =>
+            const filteredData = allServices?.filter((name) =>
                 name.service.toLowerCase().includes(searchValue.toLowerCase())
             );
             setFilteredServices(filteredData);
@@ -29,6 +29,7 @@ const AllServices = () => {
             setFilteredServices(allServices);
         }
     }, [searchValue, allServices]);
+    
     // scroll motion
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
@@ -41,7 +42,7 @@ const AllServices = () => {
     return (
         <>
             <motion.div className="fixed top-[49px] left-0 right-0 h-3 bg-gradient-to-r from-indigo-600 via-purple-500 to-rose-500 z-10 transform origin-top-left" style={{ scaleX }} />
-            
+
             <div className="w-full flex flex-col gap-12">
                 <div className="flex items-center justify-center">
                     <div className="relative w-full md:w-2/3 lg:w-1/2">
@@ -54,13 +55,13 @@ const AllServices = () => {
 
                 <div className='w-full grid gap-6'>
                     {
-                        filteredServices.slice(0, servicesLength).map((services, i) => <AllServicesCard
+                        filteredServices?.slice(0, servicesLength).map((services, i) => <AllServicesCard
                             key={i}
                             services={services}
                         />)
                     }
                 </div>
-                <div className={`mt-6 flex items-center justify-center ${servicesLength === filteredServices.length || filteredServices.length < 7 ? 'hidden' : ''}`} >
+                <div className={`mt-6 flex items-center justify-center ${servicesLength === filteredServices?.length || filteredServices?.length < 7 ? 'hidden' : ''}`} >
                     <button onClick={handleShowAllData} className='py-2 px-8 border border-rose-500 hover:bg-rose-500 hover:text-white rounded font-semibold transition-all duration-300'>Show All Services</button>
                 </div>
             </div>

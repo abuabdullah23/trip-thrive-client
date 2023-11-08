@@ -17,7 +17,7 @@ const ServiceDetails = () => {
     const [allServices, setAllServices] = useState([]);
 
     // filter related services
-    const relatedServices = allServices.filter((services) => services.providerEmail === providerEmail);
+    const relatedServices = allServices?.filter((services) => services.providerEmail === providerEmail);
 
     // for modal
     const [isOpen, setIsOpen] = useState(false);
@@ -92,7 +92,7 @@ const ServiceDetails = () => {
 
             {/* Related Products */}
             {
-                relatedServices.length > 1 ? <section className='w-full h-full mx-auto'>
+                relatedServices?.length > 1 ? <section className='w-full h-full mx-auto'>
                     <h2 className='text-2xl font-semibold mt-16 mb-5 text-slate-600 '>Related Services</h2>
                     <div>
                         <Swiper
@@ -118,7 +118,7 @@ const ServiceDetails = () => {
                             className='mySwipper'
                         >
                             {
-                                relatedServices.map((p, i) => <SwiperSlide key={i}>
+                                relatedServices?.map((p, i) => <SwiperSlide key={i}>
                                     <Link to={`/service-details/${p._id}`}>
                                         <div className='w-full h-[240px] '>
                                             <img className='object-cover w-full h-full' src={p.image} alt="product image" />

@@ -9,7 +9,7 @@ const FAQ = () => {
 
                 <div className="space-y-4">
                     {
-                        faqArray.map((faq) => <details
+                        faqArray?.map((faq) => <details
                             key={faq.id}
                             className="w-full border border-rose-300 rounded-lg">
                             <summary className="px-4 py-6 focus:outline-none focus-visible:ri text-xl">{faq.question}</summary>

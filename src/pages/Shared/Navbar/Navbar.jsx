@@ -48,7 +48,7 @@ const Navbar = () => {
                     <div className={`${show ? 'absolute bg-white z-20 w-3/4 h-screen -top-3 -left-5 p-8' : 'hidden'} lg:hidden`}>
                         <ul className='flex flex-col items-start gap-2 font-semibold'>
                             {
-                                allNav.map((nav) => <li key={nav.id} onClick={() => setShow(false)}>
+                                allNav?.map((nav) => <li key={nav.id} onClick={() => setShow(false)}>
                                     <ActiveLink to={nav.path}>
                                         {nav.title}
                                     </ActiveLink>
@@ -64,7 +64,7 @@ const Navbar = () => {
                                         </div>
                                         <div className={`flex flex-col w-fit whitespace-nowrap absolute top-7 bg-gray-100 rounded ease-in-out ${showDropdown ? 'visible' : 'invisible'}`}>
                                             {
-                                                loggedUserNav.map((item) => <Link
+                                                loggedUserNav?.map((item) => <Link
                                                     key={item.id}
                                                     to={item.path}
                                                     onClick={() => {
@@ -87,7 +87,7 @@ const Navbar = () => {
                     <div className='hidden lg:block'>
                         <ul className='lg:flex items-center gap-5 font-semibold'>
                             {
-                                allNav.map((nav) => <li key={nav.id} onClick={() => setShow(false)}>
+                                allNav?.map((nav) => <li key={nav.id} onClick={() => setShow(false)}>
                                     <ActiveLink to={nav.path}>
                                         {nav.title}
                                     </ActiveLink>
@@ -103,7 +103,7 @@ const Navbar = () => {
                                         </div>
                                         <div className={`flex flex-col w-fit whitespace-nowrap absolute top-7 bg-gray-100 rounded ease-in-out ${showDropdown ? 'visible' : 'invisible'}`}>
                                             {
-                                                loggedUserNav.map((item) => <Link
+                                                loggedUserNav?.map((item) => <Link
                                                     key={item.id}
                                                     to={item.path}
                                                     onClick={() => setShowDropdown(false)}

@@ -12,7 +12,7 @@ const PopularServices = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                 {
-                    allServices.slice(0, 4).map((services, i) => <ServicesCard
+                    allServices?.slice(0, 4).map((services, i) => <ServicesCard
                         key={i}
                         singleService={services}
                     />)

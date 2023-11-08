@@ -21,11 +21,11 @@ const MyServices = () => {
                     <span title='Provider name' className='text-xl font-semibold'>{user.displayName}</span>
                 </div>
                 <span>|</span>
-                <p>My all services: {providerServices.length}</p>
+                <p>My all services: {providerServices?.length}</p>
             </div>
             <div className='mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7'>
                 {
-                    providerServices.map((service, i) => <MyServicesCard
+                    providerServices?.map((service, i) => <MyServicesCard
                         key={i}
                         singleService={service}
                         refetch={refetch}

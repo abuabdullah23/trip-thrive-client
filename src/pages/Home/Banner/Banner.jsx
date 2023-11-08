@@ -43,7 +43,7 @@ const Banner = () => {
                         responsive={responsive}
                     >
                         {
-                            sliderImages.map((img, i) => <Link className='h-[220px] md:h-[300px] lg:h-[440px] w-full block' key={i} to='/'>
+                            sliderImages?.map((img, i) => <Link className='h-[220px] md:h-[300px] lg:h-[440px] w-full block' key={i} to='/'>
                                 <img className='w-full h-full object-cover' src={img} alt="slider image" />
                             </Link>)
                         }

@@ -16,9 +16,9 @@ const MySchedules = () => {
             <SectionTitle sectionTitle={'My Schedules'} />
 
             <div className='w-fit bg-green-200 rounded-md py-2 px-4 text-xl font-semibold mb-4'>
-                <h3>My Bookings: {myBookings.length}</h3>
+                <h3>My Bookings: {myBookings?.length}</h3>
             </div>
-            <>{myBookings.length > 0 ? <>
+            <>{myBookings?.length > 0 ? <>
                 <div className="overflow-x-auto">
                     <table className="w-full p-3 text-xs text-left whitespace-nowrap">
                         <thead>
@@ -33,7 +33,7 @@ const MySchedules = () => {
                             </tr>
                         </thead>
                         <tbody className="border-b">
-                            {myBookings.map((myBooking, index) => <MyBookingRow
+                            {myBookings?.map((myBooking, index) => <MyBookingRow
                                 key={index}
                                 index={index}
                                 myBooking={myBooking}
@@ -75,7 +75,7 @@ const MySchedules = () => {
                         </thead>
                         <tbody className="border-b">
                             {
-                                myPendingBookings.map((pendingBookings, i) => <MyPendingBookingsRow
+                                myPendingBookings?.map((pendingBookings, i) => <MyPendingBookingsRow
                                     key={pendingBookings._id}
                                     index={i}
                                     pendingBookings={pendingBookings}
