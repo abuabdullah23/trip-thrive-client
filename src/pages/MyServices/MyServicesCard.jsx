@@ -42,8 +42,9 @@ const MyServicesCard = ({ singleService, refetch }) => {
             </div>
 
             <div className='px-3 flex flex-col gap-2 mb-2'>
+
                 <h2 className='text-xl font-semibold leading-tight'>{service}</h2>
-                <p>{description}</p>
+                <p className='flex-grow'>{description}</p>
 
                 <div className='flex items-center justify-between'>
                     <p className='text-rose-500 text-lg font-bold'><span className='font-normal text-gray-600'>Price:</span> ${price}</p>
