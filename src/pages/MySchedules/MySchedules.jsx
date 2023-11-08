@@ -2,7 +2,7 @@ import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import useTitle from '../../hook/useTitle';
 import usePendingBooking from '../../hook/usePendingBooking';
 import { Link } from 'react-router-dom';
-import MyBookingRow from './myBookingRow';
+import MyBookingRow from './MyBookingRow';
 import useMyBookings from '../../hook/useMyBookings';
 import MyPendingBookingsRow from './MyPendingBookingsRow';
 
