@@ -2,6 +2,9 @@ import React from 'react';
 import Banner from './Banner/Banner';
 import useTitle from '../../hook/useTitle';
 import PopularServices from './PopularServices/PopularServices';
+import FAQ from './FAQ/FAQ';
+import OurGallery from './OurGallery/OurGallery';
+import Pricing from './Pricing/Pricing';
 
 const Home = () => {
     useTitle('Home')
@@ -10,6 +13,9 @@ const Home = () => {
         <div>
             <Banner />
             <PopularServices />
+            <Pricing />
+            <OurGallery />
+            <FAQ />
         </div>
     );
 };
