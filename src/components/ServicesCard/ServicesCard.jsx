@@ -11,7 +11,7 @@ const ServicesCard = ({ singleService }) => {
                 <img className='h-full w-full object-cover relative' src={image} alt="service image" />
             </div>
 
-            <div className='px-2 py-1 flex flex-col gap-[6px] mb-2 w-full lg:w-2/3'>
+            <div className='px-2 py-1 lg:py-2 flex flex-col gap-[6px] mb-2 w-full lg:w-2/3'>
                 <h2 className='text-lg font-bold leading-tight'>{service}</h2>
                 <p>{description.slice(0, 60)}...</p>
 
