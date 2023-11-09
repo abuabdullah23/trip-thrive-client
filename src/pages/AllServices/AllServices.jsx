@@ -4,6 +4,7 @@ import useTitle from "../../hook/useTitle";
 import useAllServices from "../../hook/useAllServices";
 import { useEffect, useState } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
+import EmptyContent from "../../components/EmptyContent/EmptyContent";
 
 const AllServices = () => {
     useTitle('All Services');
@@ -29,7 +30,7 @@ const AllServices = () => {
             setFilteredServices(allServices);
         }
     }, [searchValue, allServices]);
-    
+
     // scroll motion
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
@@ -55,10 +56,19 @@ const AllServices = () => {
 
                 <div className='w-full grid gap-6'>
                     {
-                        filteredServices?.slice(0, servicesLength).map((services, i) => <AllServicesCard
-                            key={i}
-                            services={services}
-                        />)
+                        filteredServices.length > 0
+                            ? <>
+                                {
+                                    filteredServices?.slice(0, servicesLength).map((services, i) => <AllServicesCard
+                                        key={i}
+                                        services={services}
+                                    />)
+                                }
+                            </>
+                            :
+                            <>
+                                <EmptyContent emptyText={'Not Matched any service. Try again.'} />
+                            </>
                     }
                 </div>
                 <div className={`mt-6 flex items-center justify-center ${servicesLength === filteredServices?.length || filteredServices?.length < 7 ? 'hidden' : ''}`} >

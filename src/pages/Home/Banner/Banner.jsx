@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 const Banner = () => {
     const sliderImages = [
         'https://i.ibb.co/k2mfbrY/slider1.jpg',
+        'https://files.adventure-life.com/11/36/65/Safari/1300x820.webp',
+        'https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1200,h_630/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/phv2aecqaapqpgfafcmv/Shared%20Transfers%20between%20Hokkaido%20and%20Kiroro%20Resort%20(Hokkaido%20Ski%20Bus).jpg',
         'https://i.ibb.co/9g0hJ8f/slider2.jpg',
         'https://i.ibb.co/f07M3jM/slider3.jpg',
-        'https://i.ibb.co/1vBLTxS/slider4.jpg',
-        'https://i.ibb.co/jMFXKhH/slider5.jpg',
-        'https://i.ibb.co/s93jTpM/slider6.webp'
+        'https://www.uberlimousine.com/limousine-rental.jpg',
+        'https://i.ibb.co/jMFXKhH/slider5.jpg'
     ]
 
     const responsive = {
