@@ -23,7 +23,7 @@ const AllServices = () => {
     useEffect(() => {
         if (searchValue) {
             const filteredData = allServices?.filter((name) =>
-                name.service.toLowerCase().includes(searchValue.toLowerCase())
+                name.service.toLowerCase().startsWith(searchValue.toLowerCase())
             );
             setFilteredServices(filteredData);
         } else {
@@ -62,6 +62,7 @@ const AllServices = () => {
                                     filteredServices?.slice(0, servicesLength).map((services, i) => <AllServicesCard
                                         key={i}
                                         services={services}
+                                        searchValue={searchValue}
                                     />)
                                 }
                             </>

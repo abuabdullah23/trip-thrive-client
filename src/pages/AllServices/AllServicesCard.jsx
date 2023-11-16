@@ -2,7 +2,7 @@ import React from 'react';
 import { BsArrowRightShort } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
-const AllServicesCard = ({ services }) => {
+const AllServicesCard = ({ services, searchValue }) => {
     const { _id, service, image, price, providerName, providerEmail, providerPhoto, location, description } = services;
 
     return (
@@ -12,7 +12,8 @@ const AllServicesCard = ({ services }) => {
             </div>
 
             <div className='px-3 py-1 md:py-2 flex flex-col gap-[6px] mb-2 w-full md:w-2/3'>
-                <h2 className='text-xl font-bold leading-tight'>{service}</h2>
+
+                <h2 className='text-xl font-bold leading-tight'>{searchValue ? <span> <span className='inline-block bg-yellow-300'>{searchValue}</span>{service.slice(searchValue.length)}</span>:service}</h2>
                 <p>{description}</p>
                 <p>Area: {location}</p>
 
