@@ -13,7 +13,7 @@
 
 <br />
 
-## :website: Website Feature:
+## Website Feature:
 
 **Trip Thrive** is a Ride share related website for any person. Here is explain our some website features.
 
