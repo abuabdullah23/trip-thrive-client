@@ -5,9 +5,15 @@
 
 **Live site link:** https://trip-thrive-8e2c6.web.app
 
+
 <br />
 
-## Website Feature:
+## 🧰 Technologies I use
+[![My Skills](https://skillicons.dev/icons?i=react,tailwind,firebase,nodejs,express,mongodb)](https://skillicons.dev)
+
+<br />
+
+## :website: Website Feature:
 
 **Trip Thrive** is a Ride share related website for any person. Here is explain our some website features.
 
